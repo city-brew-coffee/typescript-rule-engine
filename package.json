@@ -1,9 +1,10 @@
 {
   "name": "@citybrewcoffee/rule-engine",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An engine that defines rules and combines them recursively.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "author": "City Brew Coffee",
   "license": "ISC",
@@ -11,11 +12,11 @@
   "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/city-brew-coffee/firestore-objects-typescript.git"
+    "url": "git+https://github.com/city-brew-coffee/typescript-rule-engine.git"
   },
   "bugs": {
-    "url": "https://github.com/city-brew-coffee/firestore-objects-typescript/issues"
+    "url": "https://github.com/city-brew-coffee/typescript-rule-engine/issues"
   },
-  "homepage": "https://github.com/city-brew-coffee/firestore-objects-typescript#readme",
+  "homepage": "https://github.com/city-brew-coffee/typescript-rule-engine#readme",
   "private": false
 }
