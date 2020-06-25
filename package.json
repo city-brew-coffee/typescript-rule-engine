@@ -7,7 +7,7 @@
     "lint": "tslint -p tsconfig.json",
     "check-format": "prettier --check \"src/**/*.ts\"",
     "build": "tsc",
-    "test": "jest --config jestconfig.json"
+    "test": "jest --config jestconfig.json --coverage"
   },
   "author": "City Brew Coffee",
   "license": "ISC",
