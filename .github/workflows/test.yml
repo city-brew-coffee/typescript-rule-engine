@@ -5,11 +5,11 @@ on:
     branches: 
       - master
   push:
-   branches:
-   - development
+   branches-ignore:
+   - master
 
 jobs:
-  setup:
+  Run Tests:
     runs-on: ubuntu-latest
         
     steps:
@@ -20,17 +20,9 @@ jobs:
           node-version: ${{ '10.x' }}
           registry-url: 'https://registry.npmjs.org'
       - run: npm install 
-
-  lint:
-    needs: [setup]
-    runs-on: ubuntu-latest
-    steps:
+      - name: Check Format
+        run: npm run check-format
       - name: Lint
         run: npm run lint
-
-  test:
-    needs: [setup ]
-    runs-on: ubuntu-latest
-    steps:
       - name: Test
         run: npm run test 
