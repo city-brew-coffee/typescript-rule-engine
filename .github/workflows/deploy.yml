@@ -16,11 +16,22 @@ jobs:
           node-version: ${{ '10.x' }}
           registry-url: 'https://registry.npmjs.org'
       - run: npm install 
+#       - name: Upload Artifact
+#         uses: actions/upload-artifact@master
+#         with:
+#           name: directory
+#           path: /
 
   lint:
     needs: [setup]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@master
+
+#       - uses: actions/download-artifact@master
+#         with:
+#           name: my-artifact
+#           path: path/to/artifact
       - name: Lint
         run: npm run lint
 
