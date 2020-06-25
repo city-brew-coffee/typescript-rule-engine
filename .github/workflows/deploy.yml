@@ -16,36 +16,12 @@ jobs:
           node-version: ${{ '10.x' }}
           registry-url: 'https://registry.npmjs.org'
       - run: npm install 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@master
-        with:
-          name: directory
-          path: /
-
-  lint:
-    needs: [setup]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-
-      - uses: actions/download-artifact@master
-        with:
-          name: directory
-          path: /
       - name: Lint
         run: npm run lint
-
-  test:
-    needs: [setup ]
-    runs-on: ubuntu-latest
-    steps:
       - name: Test
-        run: npm run test  
-        
-  deploy:
-    needs: [setup, lint, test]
-    runs-on: ubuntu-latest
-    steps:
+        run: npm run test
+      - name: Check Formating
+        run: npm run check-format
       - name: Build
         run: npm run build
       - name: Publish to NPM
