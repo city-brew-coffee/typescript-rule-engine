@@ -9,10 +9,12 @@ export class ListRule<I> extends Rule<I[]> {
 
   type = 'LIST_RULE';
 
-  constructor(rule: Rule<I>, listRuleType: ListRuleType) {
+  constructor(rule: Rule<I>, listRuleType: ListRuleType, count?: number, comparison?: ListRuleCountCompare) {
     super();
     this.listRuleType = listRuleType;
     this.rule = rule;
+    this.count = count;
+    this.comparison = comparison;
   }
 
   private combine(inputs: boolean[]): boolean {
