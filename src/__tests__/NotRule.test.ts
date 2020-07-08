@@ -1,4 +1,5 @@
 import { Rule } from '../Rule';
+import { NotRule } from '../NotRule';
 
 class StringContainsRule extends Rule<string> {
   type = 'STRING_CONTAINS_RULE';
@@ -15,13 +16,9 @@ class StringContainsRule extends Rule<string> {
   }
 }
 
-test('Basic string Rule', () => {
+test('Not Rule', () => {
   const containsERule = new StringContainsRule('e');
-  const containsLRule = new StringContainsRule('l');
-
-  expect(containsERule.isValid('hello')).toBe(true);
-  expect(containsERule.isValid('yoda')).toBe(false);
-
-  expect(containsLRule.isValid('hello')).toBe(true);
-  expect(containsLRule.isValid('yoda')).toBe(false);
+  expect(containsERule.isValid('test')).toBe(true);
+  const notContainsERule = new NotRule(containsERule);
+  expect(notContainsERule.isValid('test')).toBe(false);
 });
