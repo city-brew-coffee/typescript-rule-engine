@@ -47,3 +47,18 @@ const store = new RuleStore([
   },
 ]);
 ```
+
+## Rule Return Type
+
+While rules will return boolean by default, you can add a second optional generics paramters to rules to make them return something else, like a number. Here's an example.
+
+```typescript
+class StringLengthRule extends Rule<string, number> {
+  type = 'STRING_LENGTH_RULE';
+  isValid(input: string): number {
+    return input.length;
+  }
+}
+```
+
+Note that if your rule doesn't return booleans, it can not be used with the built-in RuleGroup, NotRule, or ListRule.
