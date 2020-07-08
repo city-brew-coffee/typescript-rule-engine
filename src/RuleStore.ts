@@ -8,7 +8,7 @@ import { ListRule } from './ListRule';
 export class RuleStore {
   builders: { type: string; build: (json: JsonObject) => Rule<any> }[];
 
-  constructor(builders: { type: string; build: (json: object) => any }[]) {
+  constructor(builders: { type: string; build: (json: JsonObject) => Rule<any> }[]) {
     this.builders = [
       {
         type: RuleGroup.type,

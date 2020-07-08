@@ -24,7 +24,7 @@ test('Rule serializing and deserializing from json', () => {
   const store = new RuleStore([
     {
       type: 'STRING_CONTAINS_RULE',
-      build: (obj: { [ref: string]: any }) => new StringContainsRule(obj.letterToContain),
+      build: (json) => new StringContainsRule(json.letterToContain as string),
     },
   ]);
 
@@ -50,7 +50,7 @@ test('Rule group serializing and deserializing from json', () => {
   const store = new RuleStore([
     {
       type: 'STRING_CONTAINS_RULE',
-      build: (obj: { [ref: string]: any }) => new StringContainsRule(obj.letterToContain),
+      build: (json) => new StringContainsRule(json.letterToContain as string),
     },
   ]);
 
@@ -72,7 +72,7 @@ test('Not rule serializing and deserializing from json', () => {
   const store = new RuleStore([
     {
       type: 'STRING_CONTAINS_RULE',
-      build: (obj: { [ref: string]: any }) => new StringContainsRule(obj.letterToContain),
+      build: (json) => new StringContainsRule(json.letterToContain as string),
     },
   ]);
 
@@ -91,7 +91,7 @@ test('List rule serializing and deserializing from json', () => {
   const store = new RuleStore([
     {
       type: 'STRING_CONTAINS_RULE',
-      build: (obj: { [ref: string]: any }) => new StringContainsRule(obj.letterToContain),
+      build: (json) => new StringContainsRule(json.letterToContain as string),
     },
   ]);
 
