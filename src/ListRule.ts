@@ -7,7 +7,8 @@ export class ListRule<I> extends Rule<I[]> {
   count?: number;
   comparison?: ListRuleCountCompare;
 
-  type = 'LIST_RULE';
+  static type = 'LIST_RULE';
+  type = ListRule.type;
 
   constructor(rule: Rule<I>, listRuleType: ListRuleType, count?: number, comparison?: ListRuleCountCompare) {
     super();
@@ -15,6 +16,8 @@ export class ListRule<I> extends Rule<I[]> {
     this.rule = rule;
     this.count = count;
     this.comparison = comparison;
+    if (this.listRuleType === 'INCLUDES' && !(this.count && this.comparison))
+      throw new Error('no count or comparison for list rule combine');
   }
 
   private combine(inputs: boolean[]): boolean {
@@ -39,10 +42,10 @@ export class ListRule<I> extends Rule<I[]> {
       } else if (this.comparison === 'ANYTHING_BUT') {
         return trueCount !== this.count;
       } else {
-        throw new Error('unreachable code in ListRule combine');
+        throw new Error('No valid comparison found');
       }
     } else {
-      throw new Error('unreachable code in ListRule combine');
+      throw new Error('No valid list rule type found');
     }
   }
 

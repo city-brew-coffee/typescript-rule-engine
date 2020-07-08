@@ -3,7 +3,9 @@ import { RuleGroupType, RuleType } from './Enums';
 export class RuleGroup<T> extends Rule<T> {
   subRules: Rule<T>[];
   ruleGroupType: RuleGroupType;
-  type: RuleType = 'RULE_GROUP';
+
+  static type = 'RULE_GROUP';
+  type = RuleGroup.type;
 
   constructor(subRules: Rule<T>[], ruleGroupType: RuleGroupType) {
     super();
