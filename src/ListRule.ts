@@ -1,8 +1,8 @@
 import { Rule } from './Rule';
 import { ListRuleType, ListRuleCountCompare } from './Enums';
 
-export class ListRule<I> extends Rule<I[]> {
-  rule: Rule<I>;
+export class ListRule<T> extends Rule<T[]> {
+  rule: Rule<T>;
   listRuleType: ListRuleType;
   count?: number;
   comparison?: ListRuleCountCompare;
@@ -10,7 +10,7 @@ export class ListRule<I> extends Rule<I[]> {
   static type = 'LIST_RULE';
   type = ListRule.type;
 
-  constructor(rule: Rule<I>, listRuleType: ListRuleType, count?: number, comparison?: ListRuleCountCompare) {
+  constructor(rule: Rule<T>, listRuleType: ListRuleType, count?: number, comparison?: ListRuleCountCompare) {
     super();
     this.listRuleType = listRuleType;
     this.rule = rule;
@@ -49,7 +49,7 @@ export class ListRule<I> extends Rule<I[]> {
     }
   }
 
-  isValid(input: I[]): boolean {
+  isValid(input: T[]): boolean {
     return this.combine(input.map((item) => this.rule.isValid(item)));
   }
 }
